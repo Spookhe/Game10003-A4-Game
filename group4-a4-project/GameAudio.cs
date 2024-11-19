@@ -20,7 +20,7 @@ namespace Game10003
         // Loads music and sound assets
         public static void LoadAssets()
         {
-            backgroundMusic = Raylib.LoadMusicStream($"{assetPath}PirateSong.mp3"); // Plays BG Music
+            backgroundMusic = Raylib.LoadMusicStream($"{assetPath}Pirate.mp3"); // Plays BG Music
             collectSound1 = Raylib.LoadSound($"{assetPath}Collect1.mp3"); // Plays Collect Sound#1
             collectSound2 = Raylib.LoadSound($"{assetPath}Collect2.mp3"); // Plays Collect Sound#2
         }
