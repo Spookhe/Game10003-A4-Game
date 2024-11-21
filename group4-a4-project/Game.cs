@@ -11,14 +11,15 @@ namespace Game10003
     public class Game
     {
         // Place your variables here:
-
+        TextHelper textHelper;
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
         public void Setup()
         {
-
+            Window.SetSize(800, 600);
+            textHelper = new TextHelper();
         }
 
         /// <summary>
@@ -26,7 +27,8 @@ namespace Game10003
         /// </summary>
         public void Update()
         {
-
+            Window.ClearBackground(Color.White);
+            textHelper.TextBubble("top", "Test");
         }
     }
 }
