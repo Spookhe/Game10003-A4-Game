@@ -11,17 +11,14 @@ namespace Game10003
     public class Game
     {
         // Place your variables here:
-        TextHelper textHelper;
+
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
         public void Setup()
         {
-            Window.SetTitle("teamproj");
-            Window.SetSize(800, 600);
-            Window.TargetFPS = 60;
-            textHelper = new TextHelper();
+
         }
 
         /// <summary>
@@ -29,9 +26,7 @@ namespace Game10003
         /// </summary>
         public void Update()
         {
-            Window.ClearBackground(Color.Gray);
-            textHelper.TextBubble("bottom", "Test with more than 42 characters, hopefully this works lmao");
-            
+
         }
     }
 }
