@@ -18,7 +18,9 @@ namespace Game10003
         /// </summary>
         public void Setup()
         {
+            Window.SetTitle("teamproj");
             Window.SetSize(800, 600);
+            Window.TargetFPS = 60;
             textHelper = new TextHelper();
         }
 
@@ -27,8 +29,9 @@ namespace Game10003
         /// </summary>
         public void Update()
         {
-            Window.ClearBackground(Color.White);
-            textHelper.TextBubble("top", "Test");
+            Window.ClearBackground(Color.Gray);
+            textHelper.TextBubble("bottom", "Test with more than 42 characters, hopefully this works lmao");
+            
         }
     }
 }
