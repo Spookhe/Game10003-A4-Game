@@ -16,7 +16,7 @@ public class TextHelper
     int textSize = 28;
 
     /// <summary>
-    /// Creates a text bubble at a given position
+    /// Creates a text bubble at a given position on screen; "bottom", "middle", "top"
     /// </summary>
     /// <param name="position"></param>
     /// <param name="text"></param>
@@ -36,29 +36,30 @@ public class TextHelper
         if (text.Length < 42)
         {
             bubbleRadius = 25;
-            for (int i = 0; i < text.Length; i++)
+            for (int textIndex = 0; textIndex < text.Length; textIndex++)
             {
                 if (lineOneText.Length < text.Length)
                 {
-                    lineOneText += text[i];
+                    lineOneText += text[textIndex];
                 }
             }
         }
         // Handle two lines of text
-        else if (text.Length > 42)
+        else if (text.Length > 42 && text.Length < 82)
         {
             bubbleRadius = 50;
-            for (int i = 0; i < text.Length; i++)
+            for (int textIndex = 0; textIndex < text.Length; textIndex++)
             {
                 if (lineOneText.Length < 42)
                 {
-                    lineOneText += text[i];
+                    lineOneText += text[textIndex];
                 }
 
-                if (lineTwoText.Length < text.Length - 42 && i >= 42)
+                if (lineTwoText.Length < text.Length - 42 && textIndex >= 42)
                 {
-                    lineTwoText += text[i];
+                    lineTwoText += text[textIndex];
                 }
+
             }
         }
 
