@@ -12,51 +12,71 @@ namespace group4_a4_project
     internal class Player
     {
         //declared variables 
+        //vector2 position is for rendering the player square visual, where it spawns in.
         Vector2 position = new Vector2(600,600);
+        //float size is for player render square size
+
         float size = 30;
+
+        //velocity variables
         Vector2 velocity = new Vector2(0,0);
-        //make a proper score system
+        //var x and y velocity 
+        float velX = 0;
+        float velY = 0;
+
+        //shift around velocity xy to put it into vector2 for aethetics
+
+        //make a proper score system. (this will be integrated later once iv spoken with my team)
         int score;
 
-        void render()
+
+        //rendering player sprite (its a square for now)
+        public void render()
         {
             position = velocity + position;
+            Draw.FillColor = Color.Red;
             Draw.Square(position, size);
         }
-        //Im actively in the prosess of making the player render move in the derections i want it to move
 
-        void handleInput()
+        //handle imput function is for checking where the player is moving and applying that velocity to their movement
+        public void handleInput()
         {
+            //resets velocity x and y so that they key wont be perpetually moving
+            velX = 0;
+            velY = 0;
+
+            //you can change the velocity variable values below to adjust to how the game plays.
             if (Input.IsKeyboardKeyDown(KeyboardInput.W))
             {
                 //y pos for player go down
+                velY = -1;
             }
             if (Input.IsKeyboardKeyDown(KeyboardInput.A))
             {
                 //x pos for player go down
+                velX = -1;
             }
             if (Input.IsKeyboardKeyDown(KeyboardInput.S))
             {
                 //y pos for player go up
+                velY = 1;
             }
             if (Input.IsKeyboardKeyDown(KeyboardInput.D))
             {
                 //x pos for player go up
+                velX = 1;
             }
+
+            //this allows by velocity variables xy to be defined as velx and vely.
+            velocity = new Vector2(velX, velY);
+
         }
 
 
         //everything below is just some stuff iv commented out for the sake of keeping everything running properly.Aswell as a kinda todo list.
+        //everything has been completed so far... @me if there are any further issues
 
-        //set vector2 variables for player position
-
-        // KeyboardInput
-
-        //if (Input.IsKeyboardKeyDown(KeyboardInput.Space))
-
-        //velocity 
-        //window size
-
-
+        //add a score counter after speaking with team memebers.
+        //add player spawning in after intro screen is turned off.
     }
 }
