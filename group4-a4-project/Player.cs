@@ -13,7 +13,7 @@ namespace group4_a4_project
         public float speed = 4f; // Player speed
 
         // Float size is for player render square size
-        float size = 30;
+        float size = 75;
 
         // Velocity variables
         Vector2 velocity = new Vector2(0, 0);
@@ -36,6 +36,26 @@ namespace group4_a4_project
             velX = 0;
             velY = 0;
 
+            // Prevent player from leaving window -CALLBRA01
+            if (position.X > Window.Width - size)
+            {
+                position.X = Window.Width - size;
+            }
+            else if (position.X < 0)
+            {
+                position.X = 0;
+            }
+
+            if (position.Y > Window.Height - size)
+            {
+                position.Y = Window.Height - size;
+            }
+            else if (position.Y < 0)
+            {
+                position.Y = 0;
+            }
+
+            // Input
             if (Input.IsKeyboardKeyDown(KeyboardInput.W))
             {
                 // Y pos for player go down
