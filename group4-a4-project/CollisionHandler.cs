@@ -9,13 +9,11 @@ namespace Game10003
         private Collectable[] collectables;
         private Player player;
         public int playerScore = 0;
-        public int playerSize = 30;
 
         // Constructor for collectables and player collision
-        public CollisionHandler(Collectable[] collectableArray, Player playerObject, int newPlayerSize)
+        public CollisionHandler(Collectable[] collectableArray, Player playerObject)
         {
             player = playerObject;
-            playerSize = newPlayerSize;
             collectables = collectableArray;
 
         }
@@ -38,7 +36,7 @@ namespace Game10003
         {
             // Calculate player hitbox
             Vector2 playerTopLeft = player.position;
-            Vector2 playerBottomRight = new Vector2(player.position.X + playerSize, player.position.Y + playerSize);  // Updated to match player size
+            Vector2 playerBottomRight = new Vector2(player.position.X + player.size, player.position.Y + player.size);  // Updated to match player size
 
             // Calculate the collectable hitbox
             Vector2 collectableTopLeft = currentCollectable.position;

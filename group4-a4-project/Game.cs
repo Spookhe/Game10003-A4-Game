@@ -17,7 +17,7 @@ namespace Game10003
         public static int WindowHeight = 800;
 
         private Player player;
-        private float playerSize = 30;
+        private float playerSize = 100;
         private Collectable[] collectables;
         private CollisionHandler collisionHandler;
         private Timer gameTimer;
@@ -42,7 +42,7 @@ namespace Game10003
             }
 
             // Set up collision handler
-            collisionHandler = new CollisionHandler(collectables, player, (int)playerSize);
+            collisionHandler = new CollisionHandler(collectables, player);
 
             // Create a timer with 90 seconds (1 minute and 30 seconds)
             gameTimer = new Timer(90);
