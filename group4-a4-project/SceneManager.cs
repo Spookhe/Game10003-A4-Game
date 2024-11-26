@@ -2,6 +2,7 @@
 using Raylib_cs;
 using System;
 using System.Numerics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Game10003;
 
@@ -118,8 +119,8 @@ public class SceneManager
 
         Text.Color = Color.White;
         Text.Draw("PRESS SPACE TO CONTINUE", Window.Width/2 - 100, Window.Height/2);
-
-        if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+        
+        if(AnyKeyIsPressed())
         {
             currentScene = 1;
         }
@@ -131,6 +132,28 @@ public class SceneManager
         Draw.FillColor = Gray;
         Draw.Rectangle(0, 0, Window.Width, Window.Height);
     }
+
+    // Returns true if any alphabetical key is pressed
+    bool AnyKeyIsPressed()
+    {
+        for (int kbChar = 65; kbChar <= 90; kbChar++)
+        {
+            if (Raylib.IsKeyPressed((Raylib_cs.KeyboardKey)kbChar))
+            {
+                // 82 is used for both "R" and android's "menu" key, manually place "R"
+                if (kbChar == 82)
+                {
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     // If the game is over, stop the background music
     public void GameOver()
