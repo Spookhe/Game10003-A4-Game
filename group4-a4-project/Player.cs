@@ -13,13 +13,18 @@ namespace group4_a4_project
         public float speed = 4f; // Player speed
 
         // Float size is for player render square size
-        float size = 75;
+        public float size = 75;
 
         // Velocity variables
         Vector2 velocity = new Vector2(0, 0);
         // Var x and y velocity 
         float velX = 0;
         float velY = 0;
+
+        public Player(float playerSize)
+        {
+            size = playerSize;
+        }
 
         // Rendering player sprite (it's a square for now)
         public void render()
