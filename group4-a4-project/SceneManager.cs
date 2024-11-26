@@ -13,14 +13,13 @@ public class SceneManager
     Color Gray = new Color(0xA9, 0xA9, 0xA9);    // Gray color for the background
     Color DarkGray = new Color(0x2F, 0x2F, 0x2F); // Dark Gray for game over screen background
 
-
     private Player player;
     private Collectable[] collectables;
     private CollisionHandler collisionHandler;
     private Timer gameTimer;
     private bool isGameOver;
 
-    int currentScene = 1;
+    int currentScene = 0;
 
     public SceneManager()
     {
@@ -56,7 +55,13 @@ public class SceneManager
 
     public void Update()
     {
-        if (currentScene == 2)
+        // Title Screen -----------------------------------------
+        if (currentScene == 0)
+        {
+            TempTitleScreen();
+        }
+        // Main Game Scene --------------------------------------
+        else if (currentScene == 1)
         {
             // Draw the background
             DrawBackground();
@@ -102,6 +107,21 @@ public class SceneManager
 
             // Update background music
             GameSounds.Update();
+        }
+    }
+
+    // TODO: Update this screen with title sprite
+    void TempTitleScreen()
+    {
+        Draw.FillColor = Color.Blue;
+        Draw.Rectangle(0, 0, Window.Width, Window.Height);
+
+        Text.Color = Color.White;
+        Text.Draw("PRESS SPACE TO CONTINUE", Window.Width/2 - 100, Window.Height/2);
+
+        if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+        {
+            currentScene = 1;
         }
     }
 
