@@ -1,30 +1,46 @@
 ﻿using System;
 using System.Numerics;
-using group4_a4_project;
 using Raylib_cs;
 
 namespace Game10003
 {
     public class Game
     {
+        Color Blue = new Color(0x00, 0x00, 0xFF);    // Blue color for score text
+
         public static int WindowWidth = 800;
         public static int WindowHeight = 800;
 
-        SceneManager sceneManager;
+        private Timer gameTimer;
 
-        // Setup method to load assets and start background music
-        public void Setup()
+
+        gameTimer = new Timer(90);
+    }
+
+    public void Setup()
+    {
+    }
+
+    public void Update()
+    {
+
+        // Update timer and display time
+        gameTimer.Update();
+        string timeFormatted = FormatTime(gameTimer.RemainingTime);
+        Raylib.DrawText($"Time: {timeFormatted}", WindowWidth - 100, 10, 20, Blue); // Creates a blue coloured timer
+
+        // If the game time is 0, the game is over
+        if (gameTimer.RemainingTime <= 0 && !isGameOver)
         {
-            // Set up the game window
-            Window.SetSize(WindowWidth, WindowHeight);
-            sceneManager = new SceneManager();
-            sceneManager.Setup();
+            isGameOver = true;
+            GameOver();
         }
-
-        // Update method to handle game logic, player movement and collision
-        public void Update()
+        // Format timer (0:00)
+        private string FormatTime(int remainingTime)
         {
-           sceneManager.Update();
+            int minutes = remainingTime / 60;
+            int seconds = remainingTime % 60;
+            return $"{minutes}:{seconds:D2}";
         }
     }
 }
