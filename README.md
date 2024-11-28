@@ -2,7 +2,9 @@
 
 Contributions:
 Ethan -	Audio Implementation, Timer, Collectables, First Game.cs merge
+
 Brandon - Collision, Text bubble display, scene handling
+
 Kevin - Player
 
 
