@@ -19,7 +19,9 @@ public class SceneManager
     private CollisionHandler collisionHandler;
     private Timer gameTimer;
     private bool isGameOver;
+    private TextHelper textHelper;
 
+    float tempCounter = 0;
     int currentScene = 0;
 
     public SceneManager()
@@ -43,6 +45,9 @@ public class SceneManager
         // Set up collision handler
         collisionHandler = new CollisionHandler(collectables, player);
 
+        // Setup Text Bubble Helper
+        textHelper = new TextHelper();
+
         // Create a timer with 90 seconds (1 minute and 30 seconds)
         gameTimer = new Timer(90);
     }
@@ -61,8 +66,12 @@ public class SceneManager
         {
             TempTitleScreen();
         }
+        if (currentScene == 1)
+        {
+            TempIntroScreen();
+        }
         // Main Game Scene --------------------------------------
-        else if (currentScene == 1)
+        else if (currentScene == 2)
         {
             // Draw the background
             DrawBackground();
@@ -114,15 +123,36 @@ public class SceneManager
     // TODO: Update this screen with title sprite
     void TempTitleScreen()
     {
+        
         Draw.FillColor = Color.Blue;
         Draw.Rectangle(0, 0, Window.Width, Window.Height);
 
         Text.Color = Color.White;
-        Text.Draw("PRESS SPACE TO CONTINUE", Window.Width/2 - 100, Window.Height/2);
+        Text.Draw("PRESS ANY KEY TO CONTINUE", Window.Width/2 - 175, Window.Height/2);
         
         if(AnyKeyIsPressed())
         {
             currentScene = 1;
+        }
+    }
+
+    void TempIntroScreen()
+    {
+        Draw.FillColor = Color.Blue;
+        Draw.Rectangle(0, 0, Window.Width, Window.Height);
+
+        tempCounter += Time.DeltaTime;
+
+        // Draw a text bubble to explain the goal
+        textHelper.TextBubble("bottom", "Your goal is to collect as many items as   possible before time runs out!");
+
+        if (tempCounter > 2)
+        {
+            Text.Draw("Press any key to continue!", Window.Width / 2 - 175, Window.Height / 2 - 150);
+            if (AnyKeyIsPressed())
+            {
+                currentScene = 2;
+            }
         }
     }
 
@@ -149,6 +179,10 @@ public class SceneManager
                 {
                     return true;
                 }
+            }
+            else if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+            {
+                return true;
             }
         }
         return false;
