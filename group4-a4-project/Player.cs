@@ -8,7 +8,9 @@ namespace group4_a4_project
     {
         // Declared variables 
         // Vector2 position is for rendering the player square visual, where it spawns in.
-        public Vector2 position = new Vector2(600, 600);
+
+        //public Vector2 position = new Vector2(600, 600);
+        public Vector2 position = new Vector2( playerx, playery);
 
         public float speed = 4f; // Player speed
 
@@ -20,6 +22,11 @@ namespace group4_a4_project
         // Var x and y velocity 
         float velX = 0;
         float velY = 0;
+        //variables for player position and barriar
+        private static float playerx;
+        private static float playery;
+        private static float playerxneg = playerx + 30;
+        private static float playeryneg = playery + 30;
 
         // Rendering player sprite (it's a square for now)
         public void render()
@@ -60,5 +67,41 @@ namespace group4_a4_project
             // Updates velocity from speed
             velocity = new Vector2(velX * speed, velY * speed);
         }
+
+        //this is the barrier function inside is a if statement ladder that checks if player position is greater or equal to barrier...
+        public void Barrier()
+        {
+            //if player position is equal to or greater than barrier itll add a value to the position to keep player from progressing
+            if (playerx >= 800)
+            {
+
+
+            }
+            if (playery >= 800)
+            {
+
+
+            }
+            //player x & y neg is just the other side of the player render...
+            //since xy pos is top left corner when rendering player i made the other side of the player square to make sure the barrier sees player as a square not a dot.
+            //if there is an easier way ill make changes and commit..
+            if(playerxneg >= 800)
+            {
+
+            }
+            if(playerxneg >= 800)
+            {
+
+            }
+        }
+
+        
+
+        //todo list for the most recent branch
+
+        //make sure to change to pascal case 
+        //set the window bounderies fix any bugs
+        //check in with team to make sure commit functions properly and the window barriers function properly
+        
     }
 }
