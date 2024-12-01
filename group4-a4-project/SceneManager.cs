@@ -14,6 +14,9 @@ public class SceneManager
     Color Gray = new Color(0xA9, 0xA9, 0xA9);    // Gray color for the background
     Color DarkGray = new Color(0x2F, 0x2F, 0x2F); // Dark Gray for game over screen background
 
+    Texture2D backgroundSprite;
+    Texture2D titleSprite;
+
     private Player player;
     private Collectable[] collectables;
     private CollisionHandler collisionHandler;
@@ -26,6 +29,10 @@ public class SceneManager
     {
         // Create player
         player = new Player();
+
+
+        backgroundSprite = Graphics.LoadTexture("../../../assets/sprites/SS Fixed Background.png");
+        titleSprite = Graphics.LoadTexture("../../../assets/sprites/SS Fixed Title Screen.png");
 
         // Create 3 collectables at random positions
         collectables = new Collectable[3];
@@ -117,20 +124,23 @@ public class SceneManager
         Draw.FillColor = Color.Blue;
         Draw.Rectangle(0, 0, Window.Width, Window.Height);
 
-        Text.Color = Color.White;
-        Text.Draw("PRESS SPACE TO CONTINUE", Window.Width/2 - 100, Window.Height/2);
+        Graphics.Draw(titleSprite,0,0);
+
+       // Text.Color = Color.White;
+      //  Text.Draw("PRESS SPACE TO CONTINUE", Window.Width/2 - 100, Window.Height/2);
         
         if(AnyKeyIsPressed())
         {
             currentScene = 1;
         }
     }
-
+ 
     public void DrawBackground()
     {
         // Draws a gray background
         Draw.FillColor = Gray;
         Draw.Rectangle(0, 0, Window.Width, Window.Height);
+        Graphics.Draw(backgroundSprite,0,0);
     }
 
     // Returns true if any alphabetical key is pressed
