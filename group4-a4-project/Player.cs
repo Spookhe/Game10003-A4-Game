@@ -13,7 +13,7 @@ namespace group4_a4_project
         public float speed = 4f; // Player speed
 
         // Float size is for player render square size
-        float size = 30;
+        public float size = 90;
 
         // Velocity variables
         Vector2 velocity = new Vector2(0, 0);
@@ -34,8 +34,9 @@ namespace group4_a4_project
         {
             position = velocity + position;
             Draw.FillColor = Color.Red;
-            Draw.Square(position, size);
-            Graphics.Draw(playerSprite, position.X -32, position.Y -35);
+
+            Graphics.Draw(playerSprite, position.X, position.Y);
+            //Draw.Square(position, size);
         }
 
         // Handle input function is for checking where the player is moving and applying that velocity to their movement
@@ -52,17 +53,17 @@ namespace group4_a4_project
             }
             if (Input.IsKeyboardKeyDown(KeyboardInput.A))
             {
-                // X pos for player go down
+                // X pos for player go left
                 velX = -1;
             }
             if (Input.IsKeyboardKeyDown(KeyboardInput.S))
             {
-                // Y pos for player go up
+                // Y pos for player go down
                 velY = 1;
             }
             if (Input.IsKeyboardKeyDown(KeyboardInput.D))
             {
-                // X pos for player go up
+                // X pos for player go right
                 velX = 1;
             }
 

@@ -35,7 +35,7 @@ namespace Game10003
         {
             // Calculate player hitbox
             Vector2 playerTopLeft = player.position;
-            Vector2 playerBottomRight = new Vector2(player.position.X + 30, player.position.Y + 30);  // Updated to match player size
+            Vector2 playerBottomRight = new Vector2(player.position.X + player.size, player.position.Y + player.size);  // Updated to match player size
 
             // Calculate the collectable hitbox
             Vector2 collectableTopLeft = currentCollectable.position;

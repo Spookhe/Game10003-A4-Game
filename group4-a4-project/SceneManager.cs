@@ -16,6 +16,7 @@ public class SceneManager
 
     Texture2D backgroundSprite;
     Texture2D titleSprite;
+    Texture2D introSprite;
 
     private Player player;
     private Collectable[] collectables;
@@ -35,6 +36,7 @@ public class SceneManager
 
         backgroundSprite = Graphics.LoadTexture("../../../assets/sprites/SS Fixed Background.png");
         titleSprite = Graphics.LoadTexture("../../../assets/sprites/SS Fixed Title Screen.png");
+        introSprite = Graphics.LoadTexture("../../../assets/sprites/SS Cantata Left.png");
 
         // Create 3 collectables at random positions
         collectables = new Collectable[3];
@@ -127,6 +129,25 @@ public class SceneManager
         }
     }
 
+    void TempIntroScreen()
+    {
+        Graphics.Draw(backgroundSprite, 0, 0);
+        Graphics.Draw(introSprite, -250, -400);
+        tempCounter += Time.DeltaTime;
+
+        // Draw a text bubble to explain the goal
+        textHelper.TextBubble("Your goal is to collect as many items as   possible before time runs out!");
+
+        if (tempCounter > 2)
+        {
+            Text.Draw("Press any key to continue!", Window.Width / 2 - 175, Window.Height / 2 - 150);
+            if (AnyKeyIsPressed())
+            {
+                currentScene = 2;
+            }
+        }
+    }
+
     // TODO: Update this screen with title sprite
     void TempTitleScreen()
     {
@@ -148,8 +169,6 @@ public class SceneManager
     public void DrawBackground()
     {
         // Draws a gray background
-        Draw.FillColor = Gray;
-        Draw.Rectangle(0, 0, Window.Width, Window.Height);
         Graphics.Draw(backgroundSprite,0,0);
     }
 
