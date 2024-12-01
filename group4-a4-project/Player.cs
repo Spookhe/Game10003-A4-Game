@@ -21,12 +21,16 @@ namespace group4_a4_project
         float velX = 0;
         float velY = 0;
 
+       Texture2D playerSprite = Graphics.LoadTexture("C:\\Users\\alexi\\source\\repos\\group4-a4-project\\group4-a4-project\\assets\\sprites\\SS Cantata Right.png");
+
         // Rendering player sprite (it's a square for now)
         public void render()
         {
             position = velocity + position;
             Draw.FillColor = Color.Red;
             Draw.Square(position, size);
+
+            Graphics.Draw(playerSprite, position.X, position.Y);
         }
 
         // Handle input function is for checking where the player is moving and applying that velocity to their movement
