@@ -75,7 +75,7 @@ public class SceneManager
         }
         if (currentScene == 1)
         {
-            TempIntroScreen();
+          //  TempIntroScreen();
         }
         // Main Game Scene --------------------------------------
         else if (currentScene == 2)
