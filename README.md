@@ -10,6 +10,7 @@ Kevin - Player, player boundary
 
 Adrian - Spritework, sprite implementation code
 
+Adrian - Graphics, Sprites, Background, Title Screen
 
 
 How to play:
