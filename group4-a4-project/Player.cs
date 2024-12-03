@@ -23,7 +23,7 @@ namespace group4_a4_project
         float velX = 0;
         float velY = 0;
         //a bit of a janky vector for defineing the window barrier to the player
-        public Vector4 barrier = new Vector4(0,0,770,770);
+        public Vector4 barrier = new Vector4(0,0,800,800);
 
         // Rendering player sprite (it's a square for now)
         public void render()
@@ -63,7 +63,8 @@ namespace group4_a4_project
             //if statements bellow have a plus 30 to position.y to make it stop on the right side of the cube since right now it sees player as only the top left dot of the square.
             if (Input.IsKeyboardKeyDown(KeyboardInput.S))
             {
-                if (position.Y - 30 == barrier.Z)
+                //position.y/x + size makes it so that the other side of the square is registered by the barrier and not just the top left corner of the player sprite
+                if (position.Y + size > barrier.Z)
                 {
                     velY = 0;
                 }
@@ -73,7 +74,7 @@ namespace group4_a4_project
             }
             if (Input.IsKeyboardKeyDown(KeyboardInput.D))
             {
-                if (position.X - 30 == barrier.W)
+                if (position.X + size > barrier.W)
                 {
                     velX = 0;
                 }
@@ -86,6 +87,5 @@ namespace group4_a4_project
         }
         //this is the barrier function inside is a if statement ladder that checks if player position is greater or equal to barrier...
     }
-        //todo list for the most recent branch
-        //make sure to change to pascal case 
+        
 }
