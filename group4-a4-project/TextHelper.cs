@@ -20,9 +20,9 @@ public class TextHelper
     /// </summary>
     /// <param name="position"></param>
     /// <param name="text"></param>
-    public void TextBubble(string position, string text)
+    public void TextBubble(string text)
     {
-        Vector2 bubblePosition = new Vector2(100, 400);
+        Vector2 bubblePosition = new Vector2(100, 100);
 
         // Draw text bubble background
         Draw.FillColor = textBubbleColor;
