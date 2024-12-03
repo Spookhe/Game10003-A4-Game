@@ -27,7 +27,7 @@ namespace group4_a4_project
 
         public Player()
         {
-            playerSprite = Graphics.LoadTexture("../../../assets/sprites/SS Cantata Right.png");
+            playerSprite = Graphics.LoadTexture("../../../assets/sprites/SS Cantata Fixed Right.png");
         }
 
         public void render()
@@ -35,8 +35,7 @@ namespace group4_a4_project
             position = velocity + position;
             Draw.FillColor = Color.Red;
             Draw.Square(position, size);
-            Player player = new Player();
-            Graphics.Draw(player.playerSprite, position.X, position.Y);
+            Graphics.Draw(playerSprite, position.X -32, position.Y -35);
         }
 
         // Handle input function is for checking where the player is moving and applying that velocity to their movement
