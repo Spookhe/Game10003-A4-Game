@@ -14,18 +14,29 @@ public class SceneManager
     Color Gray = new Color(0xA9, 0xA9, 0xA9);    // Gray color for the background
     Color DarkGray = new Color(0x2F, 0x2F, 0x2F); // Dark Gray for game over screen background
 
+    Texture2D backgroundSprite;
+    Texture2D titleSprite;
+    Texture2D introSprite;
+
     private Player player;
     private Collectable[] collectables;
     private CollisionHandler collisionHandler;
     private Timer gameTimer;
     private bool isGameOver;
+    private TextHelper textHelper;
 
+    float tempCounter = 0;
     int currentScene = 0;
 
     public SceneManager()
     {
         // Create player
         player = new Player();
+
+
+        backgroundSprite = Graphics.LoadTexture("../../../assets/sprites/SS Fixed Background.png");
+        titleSprite = Graphics.LoadTexture("../../../assets/sprites/SS Fixed Title Screen.png");
+        introSprite = Graphics.LoadTexture("../../../assets/sprites/SS Cantata Left.png");
 
         // Create 3 collectables at random positions
         collectables = new Collectable[3];
@@ -42,6 +53,9 @@ public class SceneManager
 
         // Set up collision handler
         collisionHandler = new CollisionHandler(collectables, player);
+
+        // Setup Text Bubble Helper
+        textHelper = new TextHelper();
 
         // Create a timer with 90 seconds (1 minute and 30 seconds)
         gameTimer = new Timer(90);
@@ -61,8 +75,12 @@ public class SceneManager
         {
             TempTitleScreen();
         }
+        if (currentScene == 1)
+        {
+            TempIntroScreen();
+        }
         // Main Game Scene --------------------------------------
-        else if (currentScene == 1)
+        else if (currentScene == 2)
         {
             // Draw the background
             DrawBackground();
@@ -111,26 +129,47 @@ public class SceneManager
         }
     }
 
+    void TempIntroScreen()
+    {
+        Graphics.Draw(backgroundSprite, 0, 0);
+        Graphics.Draw(introSprite, -250, -400);
+        tempCounter += Time.DeltaTime;
+
+        // Draw a text bubble to explain the goal
+        textHelper.TextBubble("Your goal is to collect as many items as   possible before time runs out!");
+
+        if (tempCounter > 2)
+        {
+            Text.Draw("Press any key to continue!", Window.Width / 2 - 175, Window.Height / 2 - 150);
+            if (AnyKeyIsPressed())
+            {
+                currentScene = 2;
+            }
+        }
+    }
+
     // TODO: Update this screen with title sprite
     void TempTitleScreen()
     {
+        
         Draw.FillColor = Color.Blue;
         Draw.Rectangle(0, 0, Window.Width, Window.Height);
 
-        Text.Color = Color.White;
-        Text.Draw("PRESS SPACE TO CONTINUE", Window.Width/2 - 100, Window.Height/2);
+        Graphics.Draw(titleSprite,0,0);
+
+       // Text.Color = Color.White;
+      //  Text.Draw("PRESS SPACE TO CONTINUE", Window.Width/2 - 100, Window.Height/2);
         
         if(AnyKeyIsPressed())
         {
             currentScene = 1;
         }
     }
-
+ 
     public void DrawBackground()
     {
         // Draws a gray background
-        Draw.FillColor = Gray;
-        Draw.Rectangle(0, 0, Window.Width, Window.Height);
+        Graphics.Draw(backgroundSprite,0,0);
     }
 
     // Returns true if any alphabetical key is pressed
@@ -149,6 +188,10 @@ public class SceneManager
                 {
                     return true;
                 }
+            }
+            else if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+            {
+                return true;
             }
         }
         return false;
