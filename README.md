@@ -8,6 +8,7 @@ Brandon - Collision, Text bubble display, scene handling
 
 Kevin - Player
 
+Adrian - Graphics, Sprites, Background, Title Screen
 
 
 How to play:
