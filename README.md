@@ -10,8 +10,6 @@ Kevin - Player, player boundary
 
 Adrian - Spritework, sprite implementation code
 
-Adrian - Graphics, Sprites, Background, Title Screen
-
 
 How to play:
 Press any button at title screen to begin the game
